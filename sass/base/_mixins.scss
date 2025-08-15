@@ -1,0 +1,27 @@
+// Mixin (メディアクエリなど)
+
+@use 'sass:map';
+@use 'variables';
+
+@mixin flexBox($jC:space-between, $aI:center) {
+ display: flex;
+ justify-content: $jC;
+ align-items: $aI;
+}
+
+@mixin darkBlueGradation {
+ background-color: #4299E1;
+ background-image: linear-gradient(to bottom right, #4299E1, #24547B);
+}
+
+@mixin sectionBackGround {
+ background-color: #D9F4FF;
+ background-image: linear-gradient(to bottom, #D9F4FF, #4299E1);
+}
+
+
+@mixin max($breakPoint) {
+  @media #{map.get(variables.$breakPints, $breakPoint)} {
+    @content;
+  }
+}

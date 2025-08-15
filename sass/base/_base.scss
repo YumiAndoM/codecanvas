@@ -1,0 +1,246 @@
+// リセットやサイト全体の基本スタイル
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+/*=========================*/
+/*base*/
+/*=========================*/
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+ list-style-type: none;
+ color: $fontColor;
+}
+
+// * { border: 1px solid red !important; }
+
+body {
+ background-color: $baseColor;
+}
+
+a {
+ text-decoration: none;
+}
+.contentsBlock {
+ width: 70%;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+
+ @include max(xl) {
+  width: 80%;
+ }
+
+ @include max(m) {
+  width: 90%;
+ }
+}
+
+
+
+
+// section上部の余白
+.problems,
+.features,
+.testimonials,
+.flow,
+.pricing,
+.faq {
+ padding-top: 10rem;
+ padding-bottom: 4rem;
+ overflow: hidden;
+
+ @include max(m) {
+  padding-top: 4rem;
+ }
+}
+
+
+
+
+.problems,
+.testimonials,
+.pricing {
+
+
+ h2 {
+  position: relative;
+  text-align: center;
+  padding-top: 5rem;
+  margin-bottom: 3rem;
+
+  // @include max(m) {
+  //  position: static;
+  // }
+
+  span {
+   position: absolute;
+   z-index: -1;
+   text-align: center;
+   transform: translateX(-50%);
+   left: 50%;
+   font-size: 12rem;
+   color: $blueOpa;
+   bottom: -50px;
+   letter-spacing: 1rem;
+
+   @include max(m) {
+    font-size: 6rem;
+    bottom: 0;
+    // font-size: 8rem;
+    // letter-spacing: 1;
+    // top: 24rem;
+    // left: -50%;
+    // transform: rotate(90deg);
+    
+   }
+  }
+ }
+}
+
+
+.features,
+.flow,
+.faq {
+
+ @include sectionBackGround;
+
+ h2 {
+  position: relative;
+  text-align: center;
+  padding-top: 5rem;
+  margin-bottom: 3rem;
+  isolation: isolate; 
+
+  span {
+   position: absolute;
+   z-index: -1;
+   text-align: center;
+   transform: translateX(-50%);
+   left: 50%;
+   font-size: 12rem;
+   color: $whiteOpa;
+   bottom: -50px;
+   letter-spacing: 1rem;
+
+   @include max(m) {
+    font-size: 6rem;
+    bottom: 0;
+    // display: none;
+    // font-size: 8rem;
+    // letter-spacing: 1;
+    // top: 24rem;
+    // right: -50%;
+    // transform: rotate(-90deg);
+   }
+  }
+ }
+}
+
+
+
+// 三角付
+.features {
+ position: relative;
+
+ 
+
+ &::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* ボーダーで三角形を作る */
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 40px solid $baseColor; 
+ }
+}
+
+p {
+ text-align: justify;
+}
+
+
+
+
+/*=========================*/
+/*フェードアニメ*/
+/*=========================*/
+
+/* フェードアップのスタイル */
+.fadeUp {
+  animation: fadeUpAnime 0.8s forwards; /* fadeUpAnimeを0.8秒で一回実行 */
+  opacity: 0;
+
+  &--2 {
+   animation-delay: 0.4s;
+  }
+
+  &--3 {
+   animation-delay: 0.8s;
+  }
+}
+
+/* フェードレフトのスタイル */
+.fadeLeft {
+  animation: fadeLeftAnime 1.4s forwards; /* fadeLeftAnimeを0.8秒で一回実行 */
+  animation-delay: 0.3s;
+  opacity: 0;
+  // overflow: hidden;
+}
+
+/* フェードライトのスタイル */
+.fadeRight {
+  animation: fadeRightAnime 0.8s forwards; /* fadeRightAnimeを0.8秒で一回実行 */
+  opacity: 0;
+  // overflow: hidden;
+}
+
+/* トリガーアニメーションのスタイル */
+.fadeUpTrigger,
+.fadeUpTrigger--2,
+.fadeUpTrigger--3,
+.fadeLeftTrigger,
+.fadeRightTrigger {
+  opacity: 0; /* 最初は非表示 */
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0; /* 最初は非表示 */
+    transform: translateY(100px); /* 100px下に動かす */
+  }
+  to {
+    opacity: 1; /* 可視化する */
+    transform: translateY(0); /* 元の位置に戻す */
+  }
+}
+
+@keyframes fadeLeftAnime {
+  from {
+    opacity: 0; /* 最初は非表示 */
+    transform: translateX(100px); /* 100px右に動かす */
+  }
+  to {
+    opacity: 1; /* 可視化する */
+    transform: translateX(0); /* 元の位置に戻す */
+  }
+}
+
+@keyframes fadeRightAnime {
+  from {
+    opacity: 0; /* 最初は非表示 */
+    transform: translateX(-100px); /* 100px左に動かす */
+  }
+  to {
+    opacity: 1; /* 可視化する */
+    transform: translateX(0); /* 元の位置に戻す */
+  }
+}

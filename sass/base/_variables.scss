@@ -1,0 +1,18 @@
+// 変数 (色、フォントサイズ//)
+
+$darkBlue: #2D3748;
+$blue: #4299E1;
+$baseColor: #F7FAFC;
+$fontColor: #1A202C;
+$white: #ffffff;
+
+$blueOpa: rgba(66, 153, 225, 0.1);
+$whiteOpa: rgba(255, 255, 255, 0.7);
+$shadow: rgba(24, 47, 66, 0.7);
+
+
+$breakPints: (
+  xs: "only screen and (max-width: 430px)",
+  m: "only screen and (max-width: 750px)",
+  xl: "only screen and (max-width: 1100px)"
+);
